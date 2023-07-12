@@ -38,6 +38,3 @@ if(isset($letras) && !empty($letras) && isset($numeros) && !empty($numeros) && i
 }else {
     header('location: index.php');
 }
-
-
-$var = new Generate();
