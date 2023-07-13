@@ -10,37 +10,77 @@ class Generate{
     private $password;
     private $pass = [];
     
-    function __construct(int $size){
-        $this->shuffle($size);
+    function __construct($var, $var1, $var2, int $size){
+        $this->merge($var, $var1, $var2, $size);
     }
 
-    private function shuffle(int $varSize){
+    private function merge($characters, $numbers, $simbols, $size){
 
-        $newPass = "";
+        if(!empty($characters) && !empty($numbers) && !empty($simbols)){
 
-        /** MESCLA TODOS OS ARRAYS NO ARRAY PASS */
-        $this->pass = array_merge($this->characters, $this->simbols, $this->numbers);
+            // MESCLA TODOS OS ARRAY
+            $this->pass = array_merge($this->characters, $this->simbols, $this->numbers);
 
-        /** EMBARALHA TODOS OS DADOS DO ARRAY */
+        }else if(!empty($characters) && !empty($numbers) && empty($simbols)){
+
+            //MESCLA OS ARRAYS CHARACTERS E NUMBERS
+            $this->pass = array_merge($this->characters, $this->numbers);
+
+        }else if(empty($characters) && !empty($numbers) && !empty($simbols)){
+
+            // MESCLA OS ARRAYS SIMBOLS E NUMBERS
+            $this->pass = array_merge($this->simbols, $this->numbers);
+
+        }else if(!empty($characters) && empty($numbers) && !empty($simbols)){
+
+            //MESCLA OS ARRAYS CHARACTERES E SIMBOLS
+            $this->pass = array_merge($this->characters, $this->simbols);
+
+        }else if(!empty($characters) && empty($numbers) && empty($simbols)){
+
+            // CRIA UM ARRAY SOMENTE COM CARACTERES
+            $this->pass = array_merge($this->characters);
+
+        }else if(empty($characters) && !empty($numbers) && empty($simbols)){
+            
+            //CRIA UM ARRAY COM NÚMEROS
+            $this->pass = array_merge($this->numbers);
+
+        }else if(empty($characters) && empty($numbers) && !empty($simbols)){
+
+            //CRIA UM ARRAY COM SÍMBOLOS
+            $this->pass = array_merge($this->simbols);
+
+        }     
+                
         shuffle($this->pass);
+        
+        $this->makePassword($this->pass, $size);
+        
+    }
+
+    private function makePassword($arr, int $varSize){
+        
+        $newPass = "";
 
         /** LOOP PARA PREENCHIMENTO DA SENHA */
         for ($i=0; $i < $varSize ; $i++) {
 
-            $n = random_int(0, sizeof($this->pass) -1);
+            $n = random_int(0, sizeof($arr) -1);
 
-            $newPass .= $this->pass[$n];
-        }        
+            $newPass .= $arr[$n];
+        }  
+        
+        //echo $newPass;
 
         $this->setPassword($newPass);
     }
 
-    private function setPassword($pass){
-        $this->password = $pass;
+    public function setPassword($varPass){
+        $this->password = $varPass;
     }
 
     public function getPassword(){
         return $this->password;
     }
-
 }
