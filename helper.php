@@ -7,5 +7,10 @@ $numeros = $_POST['numeros'];
 $simbolos = $_POST['simbolos'];
 $tamanho = (int) $_POST['size'];
 
-$var = new Generate($letras, $numeros, $simbolos, $tamanho);
-echo $var->getPassword();
+if(!empty($letras) || !empty($numeros) || !empty($simbolos)){
+    $var = new Generate($letras, $numeros, $simbolos, $tamanho);
+    echo $var->getPassword();
+}else {
+    header('location: index.php');
+}
+

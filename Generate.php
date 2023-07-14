@@ -70,10 +70,9 @@ class Generate{
 
             $newPass .= $arr[$n];
         }  
-        
-        //echo $newPass;
 
         $this->setPassword($newPass);
+        
     }
 
     public function setPassword($varPass){
