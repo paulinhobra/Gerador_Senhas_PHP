@@ -7,5 +7,5 @@ $numeros = $_POST['numeros'];
 $simbolos = $_POST['simbolos'];
 $tamanho = (int) $_POST['size'];
 
-$var = new Generate($letras, $simbolos, $numeros, $tamanho);
+$var = new Generate($letras, $numeros, $simbolos, $tamanho);
 echo $var->getPassword();

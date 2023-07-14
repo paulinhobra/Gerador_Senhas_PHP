@@ -17,43 +17,43 @@ class Generate{
     private function merge($characters, $numbers, $simbols, $size){
 
         if(!empty($characters) && !empty($numbers) && !empty($simbols)){
-
-            // MESCLA TODOS OS ARRAY
+            
+            // MESCLA TODOS OS ARRAYS
             $this->pass = array_merge($this->characters, $this->simbols, $this->numbers);
 
         }else if(!empty($characters) && !empty($numbers) && empty($simbols)){
-
-            //MESCLA OS ARRAYS CHARACTERS E NUMBERS
+            
+            // MESCLA OS ARRAYS CHARACTERS E NUMBERS
             $this->pass = array_merge($this->characters, $this->numbers);
-
-        }else if(empty($characters) && !empty($numbers) && !empty($simbols)){
-
-            // MESCLA OS ARRAYS SIMBOLS E NUMBERS
-            $this->pass = array_merge($this->simbols, $this->numbers);
 
         }else if(!empty($characters) && empty($numbers) && !empty($simbols)){
 
-            //MESCLA OS ARRAYS CHARACTERES E SIMBOLS
+            // MESCLA OS ARRAYS CHARACTERS E SIMBOLS
             $this->pass = array_merge($this->characters, $this->simbols);
+
+        }else if(empty($characters) && !empty($numbers) && !empty($simbols)){
+
+            // MESCLA OS ARRAYS NUMBERS E SIMBOLS
+            $this->pass = array_merge($this->numbers, $this->simbols);
 
         }else if(!empty($characters) && empty($numbers) && empty($simbols)){
 
-            // CRIA UM ARRAY SOMENTE COM CARACTERES
+            // CRIA UM ARRAY DE CHARACTERS
             $this->pass = array_merge($this->characters);
 
         }else if(empty($characters) && !empty($numbers) && empty($simbols)){
-            
-            //CRIA UM ARRAY COM NÚMEROS
+
+            // CRIA UM ARAY DE NUMBERS
             $this->pass = array_merge($this->numbers);
 
         }else if(empty($characters) && empty($numbers) && !empty($simbols)){
 
-            //CRIA UM ARRAY COM SÍMBOLOS
+            // CRIA UM ARRAY DE SIMBOLS
             $this->pass = array_merge($this->simbols);
 
-        }     
+        }
                 
-        shuffle($this->pass);
+        shuffle($this->pass); 
         
         $this->makePassword($this->pass, $size);
         
