@@ -2,3 +2,24 @@
     margin: 0;
     padding: 0;
 }
+
+.container{
+    text-align: center;
+    padding: 2%;    
+}
+
+.container form{
+    font-weight: bold;
+}
+
+.container h1{
+    font-size: 22px;
+}
+
+.container h3{
+    font-size: 18px;
+}
+
+.btn-adjust{
+    margin-top: 2%;
+}
